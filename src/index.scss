@@ -1,7 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import './app/group/group-card';
+@import './app/group/group-container';
+@import './app/user/user-container';
+
 html, body, #root {
   margin: 0;
   height: 100%;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 body, h1, h2, h3 {
@@ -18,24 +23,34 @@ a {
 }
 
 @keyframes quiver {
-  50% {
+  40% {
     transform: translate3d(8px, 0, 0);
+  }
+
+  75% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  87% {
+    transform: translate3d(2px, 0, 0);
   }
 }
 
 button {
   font-size: 14px;
   font-weight: 600;
+  font-family: inherit;
   background: #fff;
   border: none;
   border-radius: 5px;
-  padding: 12px;
+  padding: 12px 24px;
+  box-shadow: -2px 2px 3px rgba(0,0,0,0.2);
 
   &:active {
     filter: invert(90%);
   }
 
   &:hover {
-    animation: quiver 0.1s;
+    animation: quiver 0.4s;
   }
 }

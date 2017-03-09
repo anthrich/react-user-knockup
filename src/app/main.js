@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Header} from './header';
 import {UserContainer} from './user/user-container';
-import {Footer} from './footer';
+import GroupContainer from './group/group-container';
 
 const styles = {
   container: {
@@ -23,8 +23,8 @@ export class Main extends Component {
         <Header/>
         <main style={styles.main}>
           <UserContainer/>
+          <GroupContainer/>
         </main>
-        <Footer/>
       </div>
     );
   }

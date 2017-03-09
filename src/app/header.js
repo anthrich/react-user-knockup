@@ -25,7 +25,7 @@ export class Header extends Component {
     return (
       <header style={styles.header}>
         <p style={styles.title}>
-            Manage Users
+            Users are Dumber than Groups
         </p>
       </header>
     );

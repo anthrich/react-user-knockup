@@ -48,7 +48,7 @@ export class UserContainer extends Component {
 
   render() {
     return (
-      <div style={styles.title}>
+      <div className="user-container" style={styles.title}>
         <h1 style={styles.h1}>&apos;Ere&apos;s ya users!</h1>
         <button>Giz anuvva!</button>
         <div style={styles.userContainer}>
