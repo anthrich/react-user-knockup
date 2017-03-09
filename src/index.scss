@@ -1,0 +1,41 @@
+html, body, #root {
+  margin: 0;
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body, h1, h2, h3 {
+  font-weight: 300
+}
+
+a {
+  color: white;
+  text-decoration: none;
+
+  &:hover {
+    color: #5aadbb;
+  }
+}
+
+@keyframes quiver {
+  50% {
+    transform: translate3d(8px, 0, 0);
+  }
+}
+
+button {
+  font-size: 14px;
+  font-weight: 600;
+  background: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 12px;
+
+  &:active {
+    filter: invert(90%);
+  }
+
+  &:hover {
+    animation: quiver 0.1s;
+  }
+}

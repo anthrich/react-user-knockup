@@ -1,0 +1,62 @@
+import React, {Component} from 'react';
+import UserCard from './user-card';
+
+const styles = {
+  title: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: '1rem',
+    backgroundColor: '#cf4646',
+    color: 'white'
+  },
+  h1: {
+    fontWeight: 300,
+    fontSize: '4rem',
+    margin: '1rem'
+  },
+  logo: {
+    height: '12rem',
+    backgroundColor: 'white',
+    borderRadius: '1rem',
+    margin: '1rem'
+  },
+  h2: {
+    fontWeight: 300,
+    fontSize: '2rem',
+    margin: '.5rem'
+  },
+  userContainer: {
+    display: 'flex',
+    flexFlow: 'row wrap',
+    alignItems: 'center'
+  }
+};
+
+export class UserContainer extends Component {
+
+  constructor() {
+    super();
+    this.users = [
+        {firstName: 'anth', lastName: 'rich', email: 'anthr@dispostable.com'},
+        {firstName: 'john', lastName: 'rich', email: 'johnr@dispostable.com'},
+        {firstName: 'bennett', lastName: 'matrix', email: 'bmatrix@dispostable.com'},
+        {firstName: 'phil', lastName: 'johnson', email: 'philj@dispostable.com'},
+        {firstName: 'tony', lastName: 'rich', email: 'tonyr@dispostable.com'}
+    ];
+  }
+
+  render() {
+    return (
+      <div style={styles.title}>
+        <h1 style={styles.h1}>&apos;Ere&apos;s ya users!</h1>
+        <button>Giz anuvva!</button>
+        <div style={styles.userContainer}>
+            {this.users.map((user, i) => (
+              <UserCard user={user} key={i}/>
+            ))}
+        </div>
+      </div>
+    );
+  }
+}
