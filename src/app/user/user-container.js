@@ -35,14 +35,33 @@ const styles = {
 
 export class UserContainer extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchTerm: ''
+    };
+    this.handleSearchTermChange = this.handleSearchTermChange.bind(this);
+  }
+
+  handleSearchTermChange(event) {
+    this.setState({searchTerm: event.target.value});
+  }
+
+  userMatchesSearchTerm(user) {
+    return `${user.firstName} ${user.lastName}`.includes(this.state.searchTerm);
+  }
+
   render() {
     return (
       <div className="user-container" style={styles.title}>
         <h1 style={styles.h1}>&apos;Ere&apos;s ya users!</h1>
         {this.props.children}
+        <input onChange={this.handleSearchTermChange} type="text" value={this.state.searchTerm}/>
         <div style={styles.userContainer}>
-            {this.props.users.map((user, i) => (
-              <UserCard user={user} key={i} onSelect={this.props.onUserSelect}/>
+            {this.props.users
+              .filter(u => this.userMatchesSearchTerm(u))
+              .map((user, i) => (
+                <UserCard user={user} key={i} onSelect={this.props.onUserSelect}/>
             ))}
         </div>
       </div>

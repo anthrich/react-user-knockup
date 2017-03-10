@@ -46,7 +46,7 @@ export class Main extends Component {
     this.setState(prevState => {
       const newId = this.getNewId(prevState.users);
       prevState.users.push(
-        {id: newId, firstName: 'New', lastName: 'User', email: 'newuser@dispostable.com'}
+        {id: newId, firstName: 'New', lastName: 'User', email: 'newuser@dispostable.com', groups: []}
       );
       return {
         users: prevState.users
