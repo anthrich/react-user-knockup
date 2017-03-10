@@ -35,28 +35,24 @@ const styles = {
 
 export class UserContainer extends Component {
 
-  constructor() {
-    super();
-    this.users = [
-        {firstName: 'anth', lastName: 'rich', email: 'anthr@dispostable.com'},
-        {firstName: 'john', lastName: 'rich', email: 'johnr@dispostable.com'},
-        {firstName: 'bennett', lastName: 'matrix', email: 'bmatrix@dispostable.com'},
-        {firstName: 'phil', lastName: 'johnson', email: 'philj@dispostable.com'},
-        {firstName: 'tony', lastName: 'rich', email: 'tonyr@dispostable.com'}
-    ];
-  }
-
   render() {
     return (
       <div className="user-container" style={styles.title}>
         <h1 style={styles.h1}>&apos;Ere&apos;s ya users!</h1>
-        <button>Giz anuvva!</button>
+        {this.props.children}
         <div style={styles.userContainer}>
-            {this.users.map((user, i) => (
-              <UserCard user={user} key={i}/>
+            {this.props.users.map((user, i) => (
+              <UserCard user={user} key={i} onSelect={this.props.onUserSelect}/>
             ))}
         </div>
       </div>
     );
   }
 }
+
+UserContainer.propTypes = {
+    children: React.PropTypes.element,
+    users: React.PropTypes.array.isRequired,
+    onUserSelect: React.PropTypes.func
+};
+

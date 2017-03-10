@@ -1,19 +1,6 @@
 import React, {Component} from 'react';
 
 const styles = {
-    userCard: {
-        border: '1px solid #fff',
-        margin: '16px',
-        borderRadius: '12px',
-        padding: '12px',
-        width: '300px',
-        overflowWrap: 'break-word',
-
-        h4: {
-            marginTop: 0,
-            borderBottom: '1px solid #fff'
-        }
-    },
     tagHolder: {
       marginTop: '12px'
     },
@@ -30,9 +17,16 @@ const styles = {
 
 export default class UserCard extends Component {
     render() {
+        const handleUserSelect = () => {
+            this.props.onSelect(this.props.user);
+        };
+
         return (
-            <div style={styles.userCard}>
-                <h3 style={styles.userCard.h4}>
+            <div
+              onClick={handleUserSelect}
+              className={'user-card' + (this.props.user.selected ? ' selected' : '')}
+              >
+                <h3>
                     {this.props.user.firstName} {this.props.user.lastName}
                 </h3>
                 <div> {this.props.user.email} </div>
@@ -48,5 +42,6 @@ export default class UserCard extends Component {
 }
 
 UserCard.propTypes = {
-    user: React.PropTypes.object.isRequired
+    user: React.PropTypes.object.isRequired,
+    onSelect: React.PropTypes.func
 };

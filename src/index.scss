@@ -2,6 +2,7 @@
 @import './app/group/group-card';
 @import './app/group/group-container';
 @import './app/user/user-container';
+@import './app/user/user-card';
 
 html, body, #root {
   margin: 0;
@@ -20,6 +21,10 @@ a {
   &:hover {
     color: #5aadbb;
   }
+}
+
+main {
+  padding-bottom: 50px;
 }
 
 @keyframes quiver {

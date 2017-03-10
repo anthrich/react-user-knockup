@@ -1,0 +1,19 @@
+.user-card {
+  border: 1px solid #fff;
+  margin: 16px;
+  border-radius: 12px;
+  padding: 12px;
+  width: 300px;
+  overflow-wrap: break-word;
+  cursor: pointer;
+  user-select: none;
+
+  h4 {
+    margin-top: 0;
+    border-bottom: 1px solid #fff;
+  }
+
+  &.selected {
+    background-color: rgba(255,255,255,0.2);
+  }
+}
