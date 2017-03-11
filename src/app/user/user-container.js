@@ -79,7 +79,7 @@ export class UserContainer extends Component {
 }
 
 UserContainer.propTypes = {
-    children: React.PropTypes.element,
+    children: React.PropTypes.arrayOf(React.PropTypes.element),
     users: React.PropTypes.array.isRequired,
     onUserSelect: React.PropTypes.func
 };

@@ -30,28 +30,46 @@ export class Main extends Component {
       ],
       groups: [
         {id: 1, name: 'Group1', users: []}
-      ]
+      ],
+      showForm: false,
+      firstName: '',
+      lastName: '',
+      email: ''
     };
     this.handleAddUser = this.handleAddUser.bind(this);
     this.handleAddGroup = this.handleAddGroup.bind(this);
     this.handleUserSelect = this.handleUserSelect.bind(this);
     this.handleGroupSelect = this.handleGroupSelect.bind(this);
+    this.handleAddUserInputChange = this.handleAddUserInputChange.bind(this);
+    this.handleToggleForm = this.handleToggleForm.bind(this);
   }
 
   getNewId(collection) {
     return collection.sort((g, g2) => g.id - g2.id)[collection.length - 1].id + 1;
   }
 
-  handleAddUser() {
+  handleAddUser(e) {
     this.setState(prevState => {
       const newId = this.getNewId(prevState.users);
       prevState.users.push(
-        {id: newId, firstName: 'New', lastName: 'User', email: 'newuser@dispostable.com', groups: []}
+        {
+          id: newId,
+          firstName: prevState.firstName,
+          lastName: prevState.lastName,
+          email: prevState.email,
+          groups: []
+        }
       );
       return {
-        users: prevState.users
+        users: prevState.users,
+        showForm: false,
+        firstName: '',
+        lastName: '',
+        email: ''
       };
     });
+
+    e.preventDefault();
   }
 
   handleAddGroup() {
@@ -92,13 +110,57 @@ export class Main extends Component {
     });
   }
 
+  handleAddUserInputChange(event) {
+    this.setState({
+        [event.target.name]: event.target.value
+    });
+  }
+
+  handleToggleForm() {
+    this.setState(prevState => {
+      return {
+        showForm: !prevState.showForm
+      };
+    });
+  }
+
   render() {
     return (
       <div style={styles.container}>
         <Header/>
         <main style={styles.main}>
           <UserContainer users={this.state.users} onUserSelect={this.handleUserSelect}>
-            <button onClick={this.handleAddUser}>Giz anuvva!</button>
+            <button onClick={this.handleToggleForm}> {this.state.showForm ? 'hide' : 'add'} </button>
+            <form
+              className={this.state.showForm ? 'show' : ''}
+              onSubmit={this.handleAddUser}
+              >
+              <input
+                onChange={this.handleAddUserInputChange}
+                value={this.state.firstName}
+                name="firstName"
+                required="required"
+                type="text"
+                placeholder="First name"
+                />
+              <input
+                onChange={this.handleAddUserInputChange}
+                value={this.state.lastName}
+                name="lastName"
+                required="required"
+                type="text"
+                placeholder="Last name"
+                />
+              <input
+                onChange={this.handleAddUserInputChange}
+                value={this.state.email}
+                name="email"
+                required="required"
+                type="email"
+                placeholder="Email"
+                />
+              <button type="submit">Giz anuvva!</button>
+            </form>
           </UserContainer>
           <GroupContainer groups={this.state.groups} onGroupSelect={this.handleGroupSelect}>
             <button onClick={this.handleAddGroup}>Add a group!</button>

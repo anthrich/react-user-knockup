@@ -9,7 +9,36 @@
   background-color: #cf4646;
   color: white;
 
-  input[type="text"] {
+  form {
+
+    &.show {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-height: 500px;
+      opacity: 1;
+    }
+
+    width: 50%;
+    transition: height 0.4s, opacity 0.4s, max-height 0.4s;
+    margin-top: 16px;
+    padding: 18px;
+    background-color: rgba(0,0,0,0.4);
+    max-height: 0;
+    text-align: center;
+    opacity: 0;
+    overflow-y: hidden;
+
+    input {
+      width:350px;
+    }
+
+    button {
+      margin-top: 12px;
+    }
+  }
+
+  input {
     padding: 6px;
     margin-top: 16px;
     border-radius: 4px;
