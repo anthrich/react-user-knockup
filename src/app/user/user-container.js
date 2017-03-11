@@ -48,7 +48,13 @@ export class UserContainer extends Component {
   }
 
   userMatchesSearchTerm(user) {
-    return `${user.firstName} ${user.lastName}`.includes(this.state.searchTerm);
+    return `${user.firstName} ${user.lastName}`
+      .toLowerCase()
+      .includes(this.state.searchTerm.toLowerCase());
+  }
+
+  getFilteredUsers() {
+    return this.props.users.filter(u => this.userMatchesSearchTerm(u));
   }
 
   render() {
@@ -58,11 +64,9 @@ export class UserContainer extends Component {
         {this.props.children}
         <input onChange={this.handleSearchTermChange} type="text" value={this.state.searchTerm}/>
         <div style={styles.userContainer}>
-            {this.props.users
-              .filter(u => this.userMatchesSearchTerm(u))
-              .map((user, i) => (
-                <UserCard user={user} key={i} onSelect={this.props.onUserSelect}/>
-            ))}
+          {this.getFilteredUsers().map((user, i) => (
+            <UserCard user={user} key={i} onSelect={this.props.onUserSelect}/>
+          ))}
         </div>
       </div>
     );
