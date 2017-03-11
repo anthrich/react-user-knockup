@@ -62,7 +62,12 @@ export class UserContainer extends Component {
       <div className="user-container" style={styles.title}>
         <h1 style={styles.h1}>&apos;Ere&apos;s ya users!</h1>
         {this.props.children}
-        <input onChange={this.handleSearchTermChange} type="text" value={this.state.searchTerm}/>
+        <input
+          onChange={this.handleSearchTermChange}
+          type="text"
+          placeholder="Search"
+          value={this.state.searchTerm}
+          />
         <div style={styles.userContainer}>
           {this.getFilteredUsers().map((user, i) => (
             <UserCard user={user} key={i} onSelect={this.props.onUserSelect}/>

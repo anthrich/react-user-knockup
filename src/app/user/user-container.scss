@@ -8,4 +8,11 @@
   padding: 1rem;
   background-color: #cf4646;
   color: white;
+
+  input[type="text"] {
+    padding: 6px;
+    margin-top: 16px;
+    border-radius: 4px;
+    font-family: inherit;
+  }
 }
