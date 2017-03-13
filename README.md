@@ -13,6 +13,8 @@ Simple user and group management knock up - decided to use react to gain more fa
 Some improvements could be made, given more time:
 
 - Add group form
+- Remove users from groups
+- Delete users and groups
 - State management: a common problem in react (flux, redux etc)
 - Some duplication of functionality between UserContainer and GroupContainer
 - SCSS is inefficient/repeated in some places.
